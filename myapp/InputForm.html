@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Person Information Form</title>
+    <h1>Person Information Form</h1>
+</head>
+<body>
+    <div id="demo">
+
+        <form id='takeinput' method="POST" enctype="multipart/form-data">
+            Name: <input type="text" name="name" id="name" pattern="[a-zA-Z ]{1,}" title="Name should not contain special characters or numbers" required><br>
+            <br>
+            Age: <input type="number" min="15" max="100" name="age" id="age" required><br>
+            <br>
+            <input type="submit" value="Submit">
+            <!--button type="button" onclick="senddata()">Submit here!</button-->
+        </form>
+    
+    </div>
+
+    <div id="hw"><button type="button" id="get">Test GET</button></div>
+    <p id="hw"><button type="button" id="goback">Go Back to HomePage</button></p>
+
+    <script src="Javascript/GET_test.js"></script>
+    <script src="JavaScript/POST_form.js"></script>
+
+</body>
+</html>

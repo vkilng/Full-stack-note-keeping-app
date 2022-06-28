@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Output Page</title>
+</head>
+<body>
+    <h2>
+        Your Name : <span id="nme"></span>
+    </h2>
+    <h2>
+        Your Age : <span id="a"></span>
+    </h2>
+
+    <p>
+        <button type="button" id="gbck">Go Back to HomePage</button>
+    </p>
+
+    <script>
+        var mydata1 = window.localStorage.getItem('key1');
+        var mydata2 = window.localStorage.getItem('key2');
+        document.getElementById("nme").innerHTML = mydata1;
+        document.getElementById("a").innerHTML = mydata2;
+        localStorage.clear();
+
+        let btn = document.getElementById("gbck");
+        addEventListener('click',function(){
+            window.location.replace('Page_1.html')
+        });
+    </script>
+</body>
+</html>
