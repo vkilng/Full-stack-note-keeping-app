@@ -17,17 +17,6 @@ def test():
     """
     return jsonify({"message":"GET Test Successful !!!"})
 
-
-#Connecting to local My SQL database instance/server
-myDB=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Root",
-    database="srvrdb"
-)
-crsr=myDB.cursor()
-
-#
 @app.route("/tkinpt",methods=['POST'])
 def add_user():
     """POST method to process data from html form,
@@ -44,15 +33,24 @@ def add_user():
         name=data1["name"]
         age=data1["age"]
         print(name,age)
-        alldata={"metadata":{"Name":name,"Age":age}}
+        #Connecting to local My SQL database instance/server
+        my_db=mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Root",
+            database="srvrdb"
+        )
+        crsr=my_db.cursor()
         crsr.execute("INSERT INTO pplinfo(name,age) VALUES(%s,%s)",(name,age))
-        myDB.commit()
+        my_db.commit()
+        crsr.close()
         print("Commit done !!!")
+        alldata={"metadata":{"Name":name,"Age":age}}
         return jsonify(alldata),301
         #I decided against using Flask's render_template method
         #because I do not wish for the server to handle frontend services
-    else:
-        return {"Error":"Check for error"},404
+
+    return {"Error":"Check for error"},404
 
 @app.route("/lst",methods=['GET'])
 def get_lst():
@@ -63,11 +61,20 @@ def get_lst():
     """
     if request.method=='GET':
         lst_dict={}
+        #Connecting to local My SQL database instance/server
+        my_db=mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Root",
+            database="srvrdb"
+        )
+        crsr=my_db.cursor()
         crsr.execute("SELECT * FROM pplinfo")
         for user in crsr:
             lst_dict[str(user[2])]={}
             lst_dict[str(user[2])]["name"]=user[0]
             lst_dict[str(user[2])]["age"]=str(user[1])
+        crsr.close()
         lst_dict["length"]=str(len(lst_dict))
         return jsonify(lst_dict),200
 
@@ -83,3 +90,7 @@ def after_method(resp):
     """
     resp.headers["Access-Control-Allow-Origin"]="*"
     return resp
+
+if __name__ == "__main__":
+    app.run()
+    
