@@ -3,7 +3,7 @@ A python backend server developed using Flask micro-web framework,
 to facilitate data processing and transfer between a client browser and a database
 """
 from flask import Flask, request, jsonify, json
-import mysql.connector
+from db_instance import MySQLConnector
 
 app=Flask(__name__)
 
@@ -33,16 +33,10 @@ def add_user():
         name=data1["name"]
         age=data1["age"]
         print(name,age)
-        #Connecting to local My SQL database instance/server
-        my_db=mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Root",
-            database="srvrdb"
-        )
-        crsr=my_db.cursor()
+        cn_db=MySQLConnector()
+        crsr=cn_db.crsor
         crsr.execute("INSERT INTO pplinfo(name,age) VALUES(%s,%s)",(name,age))
-        my_db.commit()
+        cn_db.conn.commit()
         crsr.close()
         print("Commit done !!!")
         alldata={"metadata":{"Name":name,"Age":age}}
@@ -61,14 +55,8 @@ def get_lst():
     """
     if request.method=='GET':
         lst_dict={}
-        #Connecting to local My SQL database instance/server
-        my_db=mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Root",
-            database="srvrdb"
-        )
-        crsr=my_db.cursor()
+        cn_db=MySQLConnector()
+        crsr=cn_db.crsor
         crsr.execute("SELECT * FROM pplinfo")
         for user in crsr:
             lst_dict[str(user[2])]={}
