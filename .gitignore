@@ -1,4 +1,8 @@
-__pycache__/
+_pycache_/
 .vscode/
+myapp1/
+myapp2/_pycache_/
+myapp2/flask_session/
 venv/
-myapp/__pycache__
+*sql
+*pem

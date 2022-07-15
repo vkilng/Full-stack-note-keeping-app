@@ -1,0 +1,45 @@
+<html>
+<title>Loading...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2 id="mssg">Please wait... fetching session data</h2>
+
+  <div class="w3-grey w3-round-xlarge">
+    <div id="myBar" class="w3-blue w3-round-xlarge w3-center" style="height:24px;width:0"></div>
+  </div>
+</div>
+
+<script>
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 0;
+  let interval = 1000;
+  let pro = setInterval(frame,interval);
+  function frame() {
+    if (width == 30) {
+      interval = 100;
+      clearInterval(pro);
+      setInterval(frame,interval);
+    }
+    if (width >= 100) {
+      clearInterval();
+    }
+    else {
+      width=width+10;
+      elem.style.width = width + '%';
+      elem.innerHTML = width +'%'
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  move();
+  setTimeout(function(){window.location.replace('session.html')},5000);
+})
+
+</script>
+
+</body>
+</html> 

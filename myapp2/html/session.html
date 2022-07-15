@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.jpg">
+        <link rel="stylesheet" href="css/test_.css">
+        <title>Test Sample Page</title>
+    </head>
+    <body>
+        
+        <section style='float:top;height:10%;width:100%;border-bottom:solid;padding:5px;margin-bottom:1%;font-size:40px;'>
+            Welcome <span id="usrnm"></span>! Here is your online diary!<span><button type="button" id="lgot">Log Out</button></span>
+        </section>
+        <textarea id="new" placeholder="Take a note ..." onkeyup="textAreaAdjust(this)"></textarea>
+        <p></p>
+        
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <p id="mdc">Some text in the Modal..</p>
+              <p class="close">Close</p>
+            </div>
+          
+          </div>
+
+        <script src="js/session.js"></script>
+
+    </body>
+</html>

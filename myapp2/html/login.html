@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>User Login Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.jpg">
+        <link rel="stylesheet" href="css/SU.css">
+    </head>
+    <body>
+        <h1>Project-One Application User Login Page</h1>
+        <form id='signin' method="POST" enctype="multipart/form-data">
+            Username: <input type="text" name="name" id="name" pattern="[a-zA-Z ]{1,}" 
+            title="Name should not contain special characters or numbers" required autofocus><br>
+            <br>
+            Password: <input type="password" name="psw" id="psw" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@$.^* ]).{8,20}"
+            title="Must contain at least one number, one uppercase letter, one special character (!@$.^*) and at least 8 characters" required><br>
+            
+            <span style="font-size:smaller">&emsp;&emsp;&emsp;&emsp;&ensp;
+            <input type="checkbox" onclick="showpsw()" style="width:15px">Show Password
+            <script>
+            function showpsw() {
+                var x = document.getElementById("psw");
+                if (x.type == "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+            </script>
+            </span>
+            
+            <p><input type="submit" value="Sign In"></p>
+        </form>
+        
+        <br>New User? <span id="su">Sign Up</span>
+
+        <div id="myModal" class="modal-bckgrd">
+            <!-- Modal content -->
+            <div class="modal">
+              <p id="mdc">
+                <div id="form">
+                    <form id='takeinput' method="POST" enctype="multipart/form-data">
+                        Username: <input type="text" name="suname" id="suname" pattern="[a-zA-Z ]{1,}"
+                        title="Name should not contain special characters or numbers" required><br>
+                        <br>
+                        Age:&emsp;&emsp;&ensp;&nbsp;<input type="number" min="15" max="100" name="suage" id="suage" required><br>
+                        <br>
+                        Password:&emsp;&emsp;&emsp;&emsp;<input type="text" name="supsw" id="supsw"
+                        pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@$.^* ]).{8,20}" placeholder="atleast 8 characters"
+                        title="Must contain at least one number, one uppercase letter, one special character (!@$.^*) and at least 8 characters"
+                        required  onkeyup="check()"><br>
+                        <br>
+                        Confirm Password:&ensp;<input type="text" name="confirm_supsw" id="confirm_supsw"
+                        pattern="(?=.*\d)(?=.*[A-Z])(?=.*[!@$.^* ]).{8,20}" placeholder="atleast 8 characters"
+                        title="Must contain at least one number, one uppercase letter, one special character (!@$.^*) and at least 8 characters"
+                        required  onkeyup="check()"><br>
+                        <span id='chck'></span>
+                        <input type="submit" value="Sign Up" id="close">
+                    </form>
+                </div>
+              </p>
+            </div>
+        </div>
+
+        <script src="js/login.js"></script>
+        <script src="js/signup.js"></script>
+    </body>
+</html>
