@@ -1,5 +1,3 @@
-# My-first-steps
-
 Create new directory 'PS' and navigate into it on your favourite IDE (I use VS Code)
 
 To setup python virtual env, run command on your shell terminal ~/PS> python -m venv venv
