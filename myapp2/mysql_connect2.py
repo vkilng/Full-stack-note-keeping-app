@@ -14,8 +14,8 @@ class MySQLConnector():
             'user':'root',
             'password':'Root',
             'database':'srvrdb',
-            #'client_flags': [mysql.connector.ClientFlag.SSL],
-            #'ssl_ca': 'E:/ImgAPI/Project1/DigiCertGlobalRootCA.crt.pem'
+            #'client_flags': [...],
+            #'ssl_ca': '~/...'
         }
 
         try:
